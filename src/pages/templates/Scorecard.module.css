@@ -1,0 +1,179 @@
+.page {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    .tableContainer {
+        overflow-x: auto;
+        max-width: 95%;
+        margin: 0 auto;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: flex;
+        .sticker{
+            position: sticky;
+            .totalScore{
+                position: sticky;
+                left: 10px;
+                padding: 10px;
+                width: max-content;
+            }
+        }
+    }
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.errorBanner {
+    background-color: #ffcccc;
+    color: #D64045;
+    padding: 10px;
+    border: 1px solid #D64045;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.successBanner {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    background-color: #9ED8DB;
+    color: #1D3354;
+    padding: 10px;
+    border: 1px solid #1D3354;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.checkboxLabel {
+  display: block;
+  width: 30px; /* Adjust the width to your preference */
+  height: 30px; /* Adjust the height to your preference */
+}
+
+.checkboxLabel input {
+  width: 80%;
+  height: 80%;
+}
+
+.clearAllButton,
+.submitButton {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.clearAllButton {
+  background-color: #ffcccb; /* Light pink background */
+  color: #ff6666; /* Dark pink text color */
+
+  /* Optional: Add hover styles for a fun effect */
+  &:hover {
+    background-color: #D64045; /* Lighter pink on hover */
+    color: #ffffff; /* White text color on hover */
+  }
+}
+
+.submitButton {
+    background-color: #9ED8DB; /* Light pink background */
+    color: #467599; /* Dark pink text color */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+
+
+  /* Optional: Add hover styles for a fun effect */
+  &:hover {
+    background-color: #467599; /* Lighter pink on hover */
+    color: #E9FFF9; /* White text color on hover */
+  }
+}
+
+.submitButton.disabled {
+  pointer-events: none;
+}
+
+.form {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.funForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.funForm label {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.funForm input {
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.funFormButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.styledTable {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styledTable thead tr {
+    background-color: #467599;
+    color: #ffffff;
+    text-align: left;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.styledTable th,
+.styledTable td {
+    padding: 12px 15px;
+}
+
+.styledTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styledTable-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styledTable tbody tr:last-of-type {
+    border-bottom: 2px solid #467599;
+}
+
+.swiper{
+    font-size: 2em;
+}

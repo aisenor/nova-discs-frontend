@@ -1,0 +1,5 @@
+#D64045 - red (errors and warnings)
+#E9FFF9 - mint green pushing white (text and backgrounds)
+#9ED8DB - light blue (hover)
+#467599 - blue (for tables and headers)
+#1D3354 - dark blue (nav bar)

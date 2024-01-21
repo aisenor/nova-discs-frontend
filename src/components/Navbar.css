@@ -1,0 +1,122 @@
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.navbar {
+    list-style-type: none;
+    background-color: #1D3354;
+    display: flex;
+    margin: 0;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar h1 a{
+    text-decoration: none;
+    position: relative;
+    color: #E9FFF9;
+    font-size: 1.8em;
+    font-style: italic;
+}
+
+.bar {
+  height: 5px;
+  width: 30px;
+  background-color: #E9FFF9;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.navbar.mobile {
+  position: relative;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    ul {
+        display: flex;
+    }
+    li {
+        margin-bottom: 0;
+    }
+}
+
+.nav-item {
+    color: #E9FFF9;
+    font-size: 28px;
+    font-family: arpona, serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0 0 0 50px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-item a {
+    color: #E9FFF9;
+    font-size: 28px;
+    font-family: arpona, serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0 0 0 20px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-item a:hover {
+    color: #9ED8DB;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        position: absolute;
+        top: 110px;
+        left: 0;
+        width: 100%;
+        background-color: #1D3354;
+        transition: 0.5s;
+        display: none;
+    }
+
+    .nav-list.mobile {
+        display: flex;
+        padding: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #E9FFF9;
+        margin: 0;
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .bar.open:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+
+    .bar.open:nth-child(2) {
+        opacity: 0;
+    }
+
+    .bar.open:nth-child(3) {
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+}
