@@ -70,6 +70,8 @@ const ScorecardTemplate = () => {
       score: calculateSum(), // Include the score from the table footer
     };
     console.log(scoreData)
+    console.log('API URL:', process.env.REACT_APP_API_URL);
+
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/putting_league/`, {
