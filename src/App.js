@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     // Update the URL as needed
-    fetch('http://localhost:8000/')
+    fetch('https://nova-discs-fcf0d9c53d93.herokuapp.com/')
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));

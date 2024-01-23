@@ -72,7 +72,7 @@ const ScorecardTemplate = () => {
     console.log(scoreData)
 
     try {
-      const response = await fetch('http://localhost:8000/putting_league/', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/putting_league/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

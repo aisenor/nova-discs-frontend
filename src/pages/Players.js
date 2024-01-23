@@ -7,10 +7,9 @@ const Players = () => {
   const [data, setData] = useState({players: []});
 
   useEffect(() => {
-    fetch('http://localhost:8000/players/')
+    fetch(`https://nova-discs-fcf0d9c53d93.herokuapp.com/players/`)
       .then(response => response.json())
       .then(data => {
-          console.log(data)
           setData(data);
       })
       .catch(error => console.error('Error fetching data:', error));
@@ -22,4 +21,3 @@ const Players = () => {
 };
 
 export default Players;
-
