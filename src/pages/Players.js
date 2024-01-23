@@ -7,7 +7,7 @@ const Players = () => {
   const [data, setData] = useState({players: []});
 
   useEffect(() => {
-    fetch(`https://nova-discs-fcf0d9c53d93.herokuapp.com/players/`)
+    fetch(`${process.env.REACT_APP_API_URL}/players/`)
       .then(response => response.json())
       .then(data => {
           setData(data);
