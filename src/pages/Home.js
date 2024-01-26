@@ -13,6 +13,7 @@ const Home = () => {
   return (
     <div>
       <h1>{data.message}</h1>
+      <h2>message from mandy</h2>
     </div>
   );
 };
