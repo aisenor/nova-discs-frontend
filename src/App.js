@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Standings from './pages/Standings';
 import Scorecard from './pages/Scorecard';
 import Players from './pages/Players';
+import MyScores from './pages/MyScores';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/standings" element={<Standings data={data} />} />
         <Route path="/scorecard" element={<Scorecard data={data} />} />
         <Route path="/players" element={<Players data={data} />} />
+        <Route path="/my_scores" element={<MyScores data={data} />} />
       </Routes>
     </Router>
   );

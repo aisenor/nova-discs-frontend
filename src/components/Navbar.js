@@ -26,6 +26,7 @@ const Navbar = () => {
               <li className="nav-item" onClick={handleMenuClick}><Link to="/standings">Standings</Link></li>
               <li className="nav-item" onClick={handleMenuClick}><Link to="/scorecard">Scorecard</Link></li>
               <li className="nav-item" onClick={handleMenuClick}><Link to="/players">Players</Link></li>
+              <li className="nav-item" onClick={handleMenuClick}><Link to="/my_scores">My Scores</Link></li>
           </ul>
       </nav>
   )
