@@ -17,7 +17,7 @@ const MyScoresTemplate = () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/putting_league/?player=${playerId}`);
             if (!response.ok) {
-                throw new Error(`Error fetching putting league scores: ${response.status}`);
+                console.log(`Error fetching putting league scores ${response.status}`);
             }
 
             const data = await response.json();
