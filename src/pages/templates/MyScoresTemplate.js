@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './MyScoresTemplate.module.css';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
-const MyScoresTemplate = () => {
+const MyScoresTemplate = ({ data }) => {
     const [playerId, setPlayerId] = useState('');
     const [scores, setScores] = useState([]);
     const [error, setError] = useState(null); // New state for error handling
