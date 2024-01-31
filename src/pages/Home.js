@@ -13,7 +13,6 @@ const Home = () => {
   return (
     <div>
       <h1>{data.message}</h1>
-      <h2>test message</h2>
     </div>
   );
 };
