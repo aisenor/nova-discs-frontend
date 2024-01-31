@@ -1,9 +1,9 @@
 // frontend/src/pages/home.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ScorecardTemplate from "./templates/ScorecardTemplate";
 
 const Scorecard = () => {
-  const [data, setData] = useState({});
+  const [data] = useState({});
 
   return (
     <ScorecardTemplate data={data} />
