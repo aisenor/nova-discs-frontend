@@ -11,15 +11,6 @@
         justify-content: flex-start;
         align-items: flex-start;
         display: flex;
-        .sticker{
-            position: sticky;
-            .totalScore{
-                position: sticky;
-                left: 10px;
-                padding: 10px;
-                width: max-content;
-            }
-        }
     }
     .heading {
         display: flex;
@@ -28,6 +19,14 @@
         flex-direction: column;
         text-align: center;
     }
+}
+
+.totalScore{
+    font-size: 1.5em;
+    text-align: left;
+    left: 10px;
+    padding: 10px;
+    width: max-content;
 }
 
 .errorBanner {
@@ -98,6 +97,38 @@
     background-color: #467599; /* Lighter pink on hover */
     color: #E9FFF9; /* White text color on hover */
   }
+}
+
+.checkAllButton {
+    margin: 2px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.checkAllButton.uncheckAll {
+    background-color: #467599; /* Dark blue background */
+    color: #E9FFF9; /* White text color */
+
+    /* Optional: Add hover styles for a fun effect */
+    &:hover {
+        background-color: #29577B; /* Darker blue on hover */
+        color: #E9FFF9; /* White text color on hover */
+    }
+}
+
+.checkAllButton.checkAll {
+    background-color: #ff6666; /* Dark pink background */
+    color: #ffffff; /* White text color */
+
+    /* Optional: Add hover styles for a fun effect */
+    &:hover {
+        background-color: #D64045; /* Darker pink on hover */
+        color: #ffffff; /* White text color on hover */
+    }
 }
 
 .submitButton.disabled {

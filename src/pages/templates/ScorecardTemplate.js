@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdSwipeLeft } from "react-icons/md";
 
 import styles from './Scorecard.module.css'
@@ -22,6 +22,7 @@ const ScorecardTemplate = () => {
   const [error, setError] = useState(null); // State variable for tracking errors
   const [successMessage, setSuccessMessage] = useState(null);
   const [submitButtonVisible, setSubmitButtonAble] = useState(true);
+  const [submittedScoresCount, setSubmittedScoresCount] = useState(0);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,6 +32,18 @@ const ScorecardTemplate = () => {
     setCheckedBoxes((prevCheckedBoxes) => {
       const newCheckedBoxes = [...prevCheckedBoxes];
       newCheckedBoxes[index] = !newCheckedBoxes[index];
+      return newCheckedBoxes;
+    });
+  };
+
+  const checkAllInColumn = (colIndex) => {
+    const isColumnChecked = checkedBoxes[colIndex];
+
+    setCheckedBoxes((prevCheckedBoxes) => {
+      const newCheckedBoxes = [...prevCheckedBoxes];
+      for (let i = colIndex; i < checkboxValues.length; i += 5) {
+        newCheckedBoxes[i] = !isColumnChecked; // Toggle the state
+      }
       return newCheckedBoxes;
     });
   };
@@ -57,21 +70,42 @@ const ScorecardTemplate = () => {
     return `${year}-${month}-${day}`;
   };
 
+  const fetchSubmittedScoresCount = async () => {
+    try {
+      const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/putting_league/?date=${getCurrentDate()}&player=${formData.player}`
+      );
+
+      if (response.ok) {
+        const submittedScores = await response.json();
+        setSubmittedScoresCount(submittedScores.length);
+      } else {
+        console.error('Failed to fetch submitted scores');
+      }
+    } catch (error) {
+      console.error('Error fetching submitted scores', error);
+    }
+  };
+
+  useEffect(() => {
+    // Check if PDGA number is entered and fetch submitted scores count
+    if (formData.player) {
+      fetchSubmittedScoresCount();
+    }
+  }, [formData.player]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.date === "") {
-      formData.date = getCurrentDate()
+      formData.date = getCurrentDate();
     }
 
     const scoreData = {
       date: formData.date,
       player: formData.player,
-      score: calculateSum(), // Include the score from the table footer
+      score: calculateSum(),
     };
-    console.log(scoreData)
-    console.log('API URL:', process.env.REACT_APP_API_URL);
-
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/putting_league/`, {
@@ -84,21 +118,21 @@ const ScorecardTemplate = () => {
 
       if (response.ok) {
         console.log('Score posted successfully');
-        setError(null)
-        setSuccessMessage("Scores saved successfully!")
-          setSubmitButtonAble(false);
+        setError(null);
+        setSuccessMessage('Scores saved successfully!');
+        setSubmitButtonAble(false);
 
-        uncheckAll()
-          setTimeout(() => {
-            setSuccessMessage(null);
-            setSubmitButtonAble(true)
-          }, 5000);
-        // You can redirect or perform any other action after successful submission
+        uncheckAll();
+        fetchSubmittedScoresCount(); // Update submitted scores count
+        setTimeout(() => {
+          setSuccessMessage(null);
+          setSubmitButtonAble(true);
+        }, 5000);
       } else {
-        const responseData = await response.json()
+        const responseData = await response.json();
 
         if (responseData.player && responseData.player.length > 0) {
-          setError(`Invalid PDGA ID. You aren't setup for putting league.`);
+          setError(`Invalid PDGA ID. You aren't set up for putting league.`);
         } else {
           console.error('Failed to post score');
           setError('Failed to post score. Please try again.');
@@ -106,21 +140,21 @@ const ScorecardTemplate = () => {
       }
     } catch (error) {
       console.error('Error posting score', error);
-      setError('Error posting score. Please try again.'); // Set error message
+      setError('Error posting score. Please try again.');
     }
   };
 
   return (
       <div className={styles.page}>
-        <div>
-          <p>Basket setup order Standard <br/>
-            Basket 20' 1pt <br/>
-            Standard Basket 25' 2pt <br/>
-            Standard Basket 30' 3pt <br/>
-            Standard Basket 35' 4pt <br/>
-            Marksman Basket 25' 5pt <br/>
-          </p>
-        </div>
+        {/*<div>*/}
+        {/*  <p>Basket setup order <br/>*/}
+        {/*    Standard Basket 20' 1pt <br/>*/}
+        {/*    Standard Basket 25' 2pt <br/>*/}
+        {/*    Standard Basket 30' 3pt <br/>*/}
+        {/*    Standard Basket 35' 4pt <br/>*/}
+        {/*    Marksman Basket 25' 5pt <br/>*/}
+        {/*  </p>*/}
+        {/*</div>*/}
 
         <div className={styles.heading}>
           <h1>Putting League Scorecard</h1>
@@ -158,14 +192,24 @@ const ScorecardTemplate = () => {
                   })}
                 </tr>
             ))}
-            </tbody>
-            <tfoot>
-            <tr className={styles.sticker}>
-              <div className={styles.totalScore} colSpan={6}>Score: {calculateSum()}</div>
+            <tr>
+              <th></th>
+              {[...Array(5)].map((_, colIndex) => (
+                  <td key={colIndex}>
+                    <button
+                        className={`${styles.checkAllButton} ${checkedBoxes[colIndex] ? styles.checkAll : styles.uncheckAll}`}
+                        onClick={() => checkAllInColumn(colIndex)}
+                    >
+                      {checkedBoxes[colIndex] ? 'Uncheck All' : 'Check All'}
+                    </button>
+                  </td>
+              ))}
             </tr>
-            </tfoot>
+            </tbody>
           </table>
         </div>
+        <div className={styles.totalScore} colSpan={6}>Score: {calculateSum()}</div>
+        <div>You have submitted {submittedScoresCount} score(s) so far tonight</div>
         {successMessage && <p className={styles.successBanner}>{successMessage}</p>}
 
         <form className={styles.funForm} onSubmit={handleSubmit}>
