@@ -5,11 +5,22 @@ import styles from './Scorecard.module.css'
 
 
 const ScorecardTemplate = () => {
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = (today.getMonth() + 1).toString().padStart(2, '0');
+    let day = today.getDate().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  };
+
   const [formData, setFormData] = useState({
-    date: '',
+    date: getCurrentDate(),
     player: '',
     score: '',
   });
+
+  const [selectedDate, setSelectedDate] = useState(getCurrentDate()); // State variable for selected date
 
   const [checkedBoxes, setCheckedBoxes] = useState(Array(25).fill(false));
   const checkboxValues = [
@@ -26,6 +37,11 @@ const ScorecardTemplate = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleChangeDate = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setSelectedDate(e.target.value)
   };
 
   const handleCheckboxChange = (index) => {
@@ -61,19 +77,10 @@ const ScorecardTemplate = () => {
     }, 0);
   };
 
-  const getCurrentDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    let month = (today.getMonth() + 1).toString().padStart(2, '0');
-    let day = today.getDate().toString().padStart(2, '0');
-
-    return `${year}-${month}-${day}`;
-  };
-
   const fetchSubmittedScoresCount = async () => {
     try {
       const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/putting_league/?date=${getCurrentDate()}&player=${formData.player}`
+          `${process.env.REACT_APP_API_URL}/putting_league/?date=${selectedDate}&player=${formData.player}`
       );
 
       if (response.ok) {
@@ -92,14 +99,10 @@ const ScorecardTemplate = () => {
     if (formData.player) {
       fetchSubmittedScoresCount();
     }
-  }, [formData.player]);
+  }, [formData.player, selectedDate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.date === "") {
-      formData.date = getCurrentDate();
-    }
 
     const scoreData = {
       date: formData.date,
@@ -209,7 +212,7 @@ const ScorecardTemplate = () => {
           </table>
         </div>
         <div className={styles.totalScore} colSpan={6}>Score: {calculateSum()}</div>
-        <div>You have submitted {submittedScoresCount} score(s) so far tonight</div>
+        <div>You have submitted {submittedScoresCount} score(s) for the selected date</div>
         {successMessage && <p className={styles.successBanner}>{successMessage}</p>}
 
         <form className={styles.funForm} onSubmit={handleSubmit}>
@@ -217,8 +220,8 @@ const ScorecardTemplate = () => {
           <input
               type="date"
               name="date"
-              value={formData.date || getCurrentDate()}
-              onChange={handleChange}
+              value={formData.date || selectedDate}
+              onChange={handleChangeDate}
               required
           />
           {error && <p className={styles.errorBanner}>{error}</p>}
