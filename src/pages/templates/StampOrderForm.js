@@ -23,8 +23,11 @@ function StampOrderForm() {
 
 
     const handleSubmit = async (e) => {
-        console.log(formData)
         e.preventDefault();
+        if (!formData.fullName.trim() || !formData.email.trim()) {
+            alert("Name and Email fields are required.");
+            return; // Prevent form submission
+        }
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/stamps/`, {
                 method: 'POST',

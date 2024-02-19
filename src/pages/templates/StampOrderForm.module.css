@@ -52,3 +52,27 @@
     border: 2px solid #ccc; /* Border of the checkbox */
     border-radius: 5px; /* Rounded corners */
 }
+
+.submitButton {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submitButton {
+    background-color: #9ED8DB; /* Light pink background */
+    color: #467599; /* Dark pink text color */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+
+
+    /* Optional: Add hover styles for a fun effect */
+    &:hover {
+        background-color: #467599; /* Lighter pink on hover */
+        color: #E9FFF9; /* White text color on hover */
+    }
+}
