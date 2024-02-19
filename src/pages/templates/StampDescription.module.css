@@ -1,0 +1,26 @@
+.page {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    h1, h2, h3, p {
+        text-align: center;
+    }
+}
+
+.advancedStamp, .basicStamp {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.basicStamp img {
+    width: 100%;
+    max-width: 200px;
+}
+
+.advancedStamp img{
+    width: 50%;
+    max-width: 200px;
+}

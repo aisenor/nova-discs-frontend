@@ -1,6 +1,5 @@
 // frontend/src/pages/home.js
 import React, { useState, useEffect } from 'react';
-
 import StandingsTemplate from './templates/StandingsTemplate';
 
 const Standings = () => {

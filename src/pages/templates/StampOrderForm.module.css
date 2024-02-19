@@ -1,0 +1,54 @@
+.form {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.funForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.funForm label {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.funForm input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.funFormButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.checkboxContainer {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    label {
+        margin-left: 10px;
+    }
+}
+
+.checkbox {
+    /* Hide the default checkbox */
+    /* Create a custom appearance for the checkbox */
+    cursor: pointer;
+    width: 30px; /* Width of the custom checkbox */
+    height: 30px; /* Height of the custom checkbox */
+    background-color: #fff; /* Background color of the checkbox */
+    border: 2px solid #ccc; /* Border of the checkbox */
+    border-radius: 5px; /* Rounded corners */
+}

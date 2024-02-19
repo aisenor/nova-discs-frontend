@@ -6,6 +6,7 @@ import Scorecard from './pages/Scorecard';
 import Players from './pages/Players';
 import MyScores from './pages/MyScores';
 import Navbar from './components/Navbar';
+import Stamps from "./pages/Stamps";
 
 function App() {
   const [data, setData] = useState({});
@@ -27,6 +28,7 @@ function App() {
         <Route path="/scorecard" element={<Scorecard data={data} />} />
         <Route path="/players" element={<Players data={data} />} />
         <Route path="/my_scores" element={<MyScores data={data} />} />
+        <Route path="/stamps" element={<Stamps data={data} />} />
       </Routes>
     </Router>
   );
