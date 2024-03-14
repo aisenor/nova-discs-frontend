@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "nova-discs-halifax"
+    "default": "nova-discs-halifax",
+    "second": "nova-discs"
   }
 }
