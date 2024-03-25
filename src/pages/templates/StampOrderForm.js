@@ -10,9 +10,10 @@ function StampOrderForm() {
         phoneNumber: '',
         email: '',
         stampType: '',
-        includeInk: '',
-        reuse: '',
+        includeInk: false,
+        reuse: false,
         comments: '',
+        honeyPot: '',
     });
 
     const handleChange = (e) => {
@@ -24,6 +25,11 @@ function StampOrderForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // Check honeypot field
+        if (formData.honeyPot) {
+            return;
+        }
+
         if (!formData.fullName.trim() || !formData.email.trim()) {
             alert("Name and Email fields are required.");
             return; // Prevent form submission
@@ -36,6 +42,24 @@ function StampOrderForm() {
                 },
                 body: JSON.stringify(formData),
             });
+            if (response.ok) {
+                // Clear the form upon successful submission
+                setFormData({
+                    fullName: '',
+                    pdgaNumber: '',
+                    phoneNumber: '',
+                    email: '',
+                    stampType: '',
+                    includeInk: false,
+                    reuse: false,
+                    comments: '',
+                    honeyPot: '', // Clear honeypot field too
+                });
+                alert("Form submitted successfully!");
+            } else {
+                console.error('Failed to submit form');
+                alert('Failed to submit form. Please try again later.');
+            }
         } catch (error) {
             console.error('Error sending email:', error);
             alert('Failed to send email. Please try again later.');
@@ -169,6 +193,13 @@ function StampOrderForm() {
                     value={formData.comments}
                     onChange={handleChange}
                     placeholder="Additional Comments to help us create the perfect stamp for your game. Include whether you want your name, PDGA number, phone number, or just an image included on your stamp"
+                />
+                <input
+                    type="text"
+                    name="honeyPot"
+                    value={formData.honeyPot}
+                    onChange={handleChange}
+                    style={{display: 'none'}}
                 />
 
                 <div className={styles.form}>
