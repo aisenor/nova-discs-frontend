@@ -9,7 +9,7 @@
     }
 }
 
-.advancedStamp, .basicStamp {
+.advancedStamp, .basicStamp, .curvedStamp, .curvedStampPhone {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -23,4 +23,8 @@
 .advancedStamp img{
     width: 50%;
     max-width: 200px;
+}
+
+.curvedStamp, .curvedStampPhone img {
+    max-width: 500px;
 }

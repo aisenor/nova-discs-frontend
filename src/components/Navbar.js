@@ -18,16 +18,16 @@ const Navbar = () => {
       <nav className={`navbar ${isMobile ? 'mobile' : ''}`}>
           <h1 onClick={handleHomeClick}><Link to="/">NovaDiscs</Link></h1>
           <div className="menu-icon" onClick={handleMenuClick}>
-              <div className={`bar ${isMobile ? 'open' : ''}`}/>
-              <div className={`bar ${isMobile ? 'open' : ''}`}/>
-              <div className={`bar ${isMobile ? 'open' : ''}`}/>
+              {/*<div className={`bar ${isMobile ? 'open' : ''}`}/>*/}
+              {/*<div className={`bar ${isMobile ? 'open' : ''}`}/>*/}
+              {/*<div className={`bar ${isMobile ? 'open' : ''}`}/>*/}
           </div>
           <ul className={`nav-list ${isMobile ? 'mobile' : ''}`}>
               {/*<li className="nav-item" onClick={handleMenuClick}><Link to="/standings">Standings</Link></li>*/}
               {/*<li className="nav-item" onClick={handleMenuClick}><Link to="/scorecard">Scorecard</Link></li>*/}
               {/*<li className="nav-item" onClick={handleMenuClick}><Link to="/players">Players</Link></li>*/}
               {/*<li className="nav-item" onClick={handleMenuClick}><Link to="/my_scores">My Scores</Link></li>*/}
-              <li className="nav-item" onClick={handleMenuClick}><Link to="/stamps">Custom Stamps</Link></li>
+              {/*<li className="nav-item" onClick={handleMenuClick}><Link to="/stamps">Custom Stamps</Link></li>*/}
           </ul>
       </nav>
   )

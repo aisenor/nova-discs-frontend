@@ -111,6 +111,17 @@ function StampOrderForm() {
                     />
                     Expert Stamp
                 </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="stampType"
+                        value="Curved Stamp"
+                        checked={formData.stampType === "Curved Stamp"}
+                        onChange={handleChange}
+                        required
+                    />
+                    Curved Stamp
+                </label>
 
                 <h3>Extras</h3>
                 <div className={styles.checkboxContainer}>
@@ -134,15 +145,15 @@ function StampOrderForm() {
                 </p>
 
                 <div className={styles.checkboxContainer}>
-                        <input
-                            type="checkbox"
-                            name="reuse"
-                            id="reuse"
-                            checked={formData.reuseChecked}
-                            onChange={handleChange}
-                            className={styles.checkbox}
-                        />
-                        <label htmlFor="reuse">No reuse; $5</label>
+                    <input
+                        type="checkbox"
+                        name="reuse"
+                        id="reuse"
+                        checked={formData.reuseChecked}
+                        onChange={handleChange}
+                        className={styles.checkbox}
+                    />
+                    <label htmlFor="reuse">No reuse; $5</label>
                 </div>
                 <p>
                     If you are providing creative direction on an image that you don't wish to see anyone else with

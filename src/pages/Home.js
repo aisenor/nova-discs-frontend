@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import StampDescription from "./templates/StampDescription";
+import StampOrderForm from "./templates/StampOrderForm";
 
 const Home = () => {
-  const [data, setData] = useState({});
-
-    useEffect(() => {
-      fetch(`${process.env.REACT_APP_API_URL}/`)
-        .then(response => response.json())
-        .then(data => setData(data))
-        .catch(error => console.error('Error fetching data:', error));
-    }, []);
-
   return (
-    <div>
-      <h1>{data.message}</h1>
-    </div>
+      <div>
+        <StampDescription/>
+        <br/>
+        <StampOrderForm/>
+      </div>
   );
 };
 
